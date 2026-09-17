@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E65B5"/>
+      <stop offset="100%" stop-color="#164A8A"/>
+    </linearGradient>
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6B853"/>
+      <stop offset="100%" stop-color="#D4A138"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="98" fill="url(#bgGrad)"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.85"/>
+  <text x="100" y="102" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="'Outfit', Arial, Helvetica, sans-serif" font-size="46" font-weight="900" letter-spacing="3">IIHM</text>
+</svg>
