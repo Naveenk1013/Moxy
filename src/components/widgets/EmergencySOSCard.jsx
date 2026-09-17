@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { openWhatsApp, formatSosShare } from '../../utils/whatsapp';
 
 export default function EmergencySOSCard({ data }) {
   const [activeTab, setActiveTab] = useState('helplines'); // 'helplines' | 'facilities'
@@ -26,15 +25,6 @@ export default function EmergencySOSCard({ data }) {
           </div>
         </div>
         <div className="sos-card__actions">
-          <button
-            type="button"
-            className="sos-whatsapp-btn"
-            onClick={() => openWhatsApp(formatSosShare(data))}
-            title="Share verified emergency helplines on WhatsApp"
-            aria-label="Share on WhatsApp"
-          >
-            💬 Share Helplines
-          </button>
           <span className="sos-badge">EMERGENCY SOS</span>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { openWhatsApp, formatItineraryShare } from '../../utils/whatsapp';
 
 export default function ItineraryCard({ data }) {
   const [activeDayIndex, setActiveDayIndex] = useState(0);
@@ -41,11 +40,6 @@ export default function ItineraryCard({ data }) {
     }
   };
 
-  const handleShareWhatsApp = () => {
-    const text = formatItineraryShare(data);
-    openWhatsApp(text);
-  };
-
   return (
     <div className="itinerary-card" role="region" aria-label={`Itinerary for ${destination}`}>
       <div className="itinerary-card__header">
@@ -62,15 +56,6 @@ export default function ItineraryCard({ data }) {
             </div>
           </div>
           <div className="itin-actions">
-            <button
-              type="button"
-              className="itin-whatsapp-btn"
-              onClick={handleShareWhatsApp}
-              title="Share this itinerary directly on WhatsApp"
-              aria-label="Share on WhatsApp"
-            >
-              💬 WhatsApp
-            </button>
             <button
               type="button"
               className="itin-print-btn"

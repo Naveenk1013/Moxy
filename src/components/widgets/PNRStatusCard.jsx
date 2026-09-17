@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { openWhatsApp, formatPnrShare } from '../../utils/whatsapp';
 
 export default function PNRStatusCard({ data }) {
   const [copied, setCopied] = useState(false);
@@ -29,11 +28,6 @@ export default function PNRStatusCard({ data }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
-  };
-
-  const handleShareWhatsApp = () => {
-    const text = formatPnrShare(data);
-    openWhatsApp(text);
   };
 
   if (isFlushedOrInvalid) {
@@ -157,15 +151,6 @@ export default function PNRStatusCard({ data }) {
             title="Copy PNR to clipboard"
           >
             {copied ? '✓ Copied' : '📋 Copy'}
-          </button>
-          <button
-            type="button"
-            className="pnr-card__whatsapp-btn"
-            onClick={handleShareWhatsApp}
-            title="Share PNR details on WhatsApp"
-            aria-label="Share on WhatsApp"
-          >
-            💬 WhatsApp
           </button>
           <span
             className={`pnr-chart-badge ${

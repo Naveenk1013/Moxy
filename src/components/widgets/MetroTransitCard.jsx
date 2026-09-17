@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { openWhatsApp, formatMetroShare } from '../../utils/whatsapp';
 
 export default function MetroTransitCard({ data }) {
   const [showStations, setShowStations] = useState(false);
@@ -44,15 +43,6 @@ export default function MetroTransitCard({ data }) {
           </div>
         </div>
         <div className="metro-card__actions">
-          <button
-            type="button"
-            className="metro-whatsapp-btn"
-            onClick={() => openWhatsApp(formatMetroShare(data))}
-            title="Share metro route on WhatsApp"
-            aria-label="Share on WhatsApp"
-          >
-            💬 WhatsApp
-          </button>
           <span className="metro-badge">HMR TRANSIT</span>
         </div>
       </div>

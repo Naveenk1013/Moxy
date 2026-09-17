@@ -14,7 +14,15 @@ import EmergencySOSCard from './widgets/EmergencySOSCard';
 import MetroTransitCard from './widgets/MetroTransitCard';
 import StationFoodCard from './widgets/StationFoodCard';
 import CurrencyCalculatorCard from './widgets/CurrencyCalculatorCard';
-import { openWhatsApp, formatGeneralMessage } from '../utils/whatsapp';
+import {
+  openWhatsApp,
+  formatGeneralMessage,
+  formatPnrShare,
+  formatItineraryShare,
+  formatSosShare,
+  formatMetroShare,
+  formatFoodShare,
+} from '../utils/whatsapp';
 
 /**
  * Robust markdown-to-JSX renderer.
@@ -264,9 +272,33 @@ export default function MessageBubble({ message }) {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const handleShareWhatsApp = () => {
-    if (!content) return;
-    const formatted = formatGeneralMessage(content);
-    openWhatsApp(formatted);
+    if (widgets && widgets.length > 0) {
+      const firstWidget = widgets[0];
+      if (firstWidget.type === 'pnr_status' && firstWidget.data) {
+        openWhatsApp(formatPnrShare(firstWidget.data));
+        return;
+      }
+      if (firstWidget.type === 'itinerary' && firstWidget.data) {
+        openWhatsApp(formatItineraryShare(firstWidget.data));
+        return;
+      }
+      if (firstWidget.type === 'emergency_sos' && firstWidget.data) {
+        openWhatsApp(formatSosShare(firstWidget.data));
+        return;
+      }
+      if (firstWidget.type === 'metro_transit' && firstWidget.data) {
+        openWhatsApp(formatMetroShare(firstWidget.data));
+        return;
+      }
+      if (firstWidget.type === 'station_food' && firstWidget.data) {
+        openWhatsApp(formatFoodShare(firstWidget.data));
+        return;
+      }
+    }
+    if (content) {
+      const formatted = formatGeneralMessage(content);
+      openWhatsApp(formatted);
+    }
   };
 
   const toggleSpeech = () => {
@@ -335,7 +367,7 @@ export default function MessageBubble({ message }) {
             </button>
           )}
 
-          {!isUser && content && (
+          {!isUser && (content || widgets.length > 0) && (
             <button
               type="button"
               className="message__whatsapp-btn"

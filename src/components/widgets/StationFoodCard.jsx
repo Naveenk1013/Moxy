@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { openWhatsApp, formatFoodShare } from '../../utils/whatsapp';
 
 export default function StationFoodCard({ data }) {
   const [filter, setFilter] = useState('all'); // 'all' | 'veg' | 'non-veg'
@@ -32,15 +31,6 @@ export default function StationFoodCard({ data }) {
           </div>
         </div>
         <div className="food-track-card__actions">
-          <button
-            type="button"
-            className="food-whatsapp-btn"
-            onClick={() => openWhatsApp(formatFoodShare(data))}
-            title="Share station culinary guide on WhatsApp"
-            aria-label="Share on WhatsApp"
-          >
-            💬 WhatsApp
-          </button>
           <span className="food-track-badge">STATION EATS</span>
         </div>
       </div>
