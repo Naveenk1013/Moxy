@@ -50,10 +50,7 @@ export default function App() {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem(THEME_KEY);
-      if (saved) return saved;
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
+      if (saved === 'dark' || saved === 'light') return saved;
     }
     return 'light';
   });
@@ -196,7 +193,7 @@ export default function App() {
             <div className="header__name">Moxy</div>
             <div className="header__status">
               <span className="header__status-dot" />
-              AI Concierge & Assistant
+              <span className="header__status-text">AI Concierge & Assistant</span>
             </div>
           </div>
         </div>

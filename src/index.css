@@ -241,6 +241,8 @@ textarea {
   align-items: center;
   gap: var(--space-3);
   min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .header__avatar {
@@ -261,6 +263,7 @@ textarea {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  overflow: hidden;
 }
 
 .header__name {
@@ -270,6 +273,9 @@ textarea {
   color: var(--color-brand-800);
   line-height: var(--line-tight);
   letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header__status {
@@ -280,6 +286,16 @@ textarea {
   color: var(--color-text-secondary);
   font-weight: 600;
   letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.header__status-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header__status-dot {
@@ -288,6 +304,7 @@ textarea {
   background-color: var(--color-success);
   border-radius: var(--radius-full);
   display: inline-block;
+  flex-shrink: 0;
   box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
   animation: statusPulse 2s infinite ease-in-out;
 }
@@ -296,6 +313,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 .header__location-btn {
@@ -384,6 +402,78 @@ textarea {
 .header__menu-btn svg {
   width: 18px;
   height: 18px;
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .header__left {
+    gap: 8px;
+  }
+
+  .header__avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header__name {
+    font-size: var(--font-md);
+  }
+
+  .header__status {
+    font-size: 0.65rem;
+  }
+
+  .header__location-btn {
+    max-width: 88px;
+    padding: 4px 8px;
+    font-size: 0.6875rem;
+  }
+
+  .header__tools-btn {
+    padding: 5px 10px;
+    font-size: 0.6875rem;
+  }
+
+  .header__menu-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__menu-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    padding: var(--space-2) var(--space-2);
+  }
+
+  .header__avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__status {
+    font-size: 0.6rem;
+  }
+
+  .header__location-btn {
+    max-width: 76px;
+    padding: 4px 6px;
+  }
+
+  .header__tools-text {
+    display: none;
+  }
+
+  .header__tools-btn {
+    padding: 5px 8px;
+  }
 }
 
 /* ========================================================
