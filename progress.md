@@ -51,4 +51,12 @@
   - Elevated Moxy's luxury AI Concierge persona with comprehensive, up-to-date knowledge for IIHM Hyderabad, global travel itineraries, and transit tasks.
   - Standardized guidelines across all 10 tools (`calculate_route_and_distance`, `get_weather_forecast`, `get_live_station`, `check_pnr_status`, `get_live_train_status`, `check_seat_availability`, `get_train_fare`, `get_flight_status_or_search`, `generate_itinerary`, `get_place_guide`).
 
+### 11. Security Implementation & Anti-Abuse Shield (Scheduled)
+- **Documented in [`security.md`](file:///c:/Users/NAVEEN/Desktop/Lancealot/Moxy/security.md)**:
+  - **Rate Limiting Architecture**: Sliding-window rate limiter per IP / device (10 req/min, 60 req/hour) in `netlify/functions/chat.js` with `429 Too Many Requests` responses and `Retry-After` headers.
+  - **Payload Guardrails**: Max 500-character input caps and conversation history window truncation (max 6 turns) to prevent prompt injection and token budget exhaustion.
+  - **CORS & Origin Lockdown**: Restricting `/api/chat` requests strictly to approved production origins.
+  - **Telemetry Caching**: Caching railway status, station boards, and weather calls (5–15 min) to prevent redundant API consumption.
+  - **Client-Side Anti-Spam**: Button cooldowns, input debouncing, and duplicate submission prevention.
+
 
